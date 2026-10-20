@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon ($Pokémon) — Catch the Legend</title>
+  <meta name="description" content="Pokémon brings epic adventures, iconic creatures, and nostalgic magic together in a world where every trainer dreams of becoming a legend!">
+  <meta name="theme-color" content="#EE1515">
+  <link rel="icon" href="logo.png">
+  <meta property="og:title" content="Pokémon ($Pokémon)">
+  <meta property="og:description" content="Pokémon brings epic adventures, iconic creatures, and nostalgic magic together in a world where every trainer dreams of becoming a legend!">
+  <meta property="og:image" content="banner.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            poke: {
+              red: "#EE1515",
+              blue: "#2A75BB",
+              deep: "#1B4F9C",
+              navy: "#0E2A5C",
+              yellow: "#FFCB05",
+              ink: "#111111"
+            }
+          },
+          fontFamily: {
+            display: ['"Lilita One"', "Impact", "system-ui", "sans-serif"],
+            body: ["Fredoka", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Fredoka, system-ui, sans-serif;
+      color: #0E2A5C;
+      background: #8ed48a;
+      overflow-x: hidden;
+    }
+    ::selection { background: #FFCB05; color: #0E2A5C; }
+    :focus-visible {
+      outline: 3px solid #FFCB05;
+      outline-offset: 3px;
+    }
+    section { scroll-margin-top: 108px; }
+
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: url("bg.png") center / cover no-repeat;
+    }
+    .page { position: relative; z-index: 1; }
+
+    .brand-title {
+      font-family: "Lilita One", Impact, sans-serif;
+      color: #FFCB05;
+      letter-spacing: 0.01em;
+      text-shadow:
+        -3px -3px 0 #1B4F9C,
+        3px -3px 0 #1B4F9C,
+        -3px 3px 0 #1B4F9C,
+        3px 3px 0 #1B4F9C,
+        0 6px 0 #0E2A5C;
+    }
+
+    .card {
+      background: #fff;
+      border: 4px solid #0E2A5C;
+      border-radius: 28px;
+      box-shadow: 6px 6px 0 #0E2A5C;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      border: 4px solid #0E2A5C;
+      border-radius: 999px;
+      padding: 0.8rem 1.3rem;
+      font-family: "Lilita One", Impact, sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      box-shadow: 4px 4px 0 #0E2A5C;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #0E2A5C; }
+    .btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #0E2A5C; }
+    .btn-red { background: #EE1515; color: #fff; }
+    .btn-red:hover { background: #ff2d2d; }
+    .btn-yellow { background: #FFCB05; color: #0E2A5C; }
+    .btn-blue { background: #2A75BB; color: #fff; }
+    .btn-blue:hover { background: #3686d4; }
+    .btn-sm { padding: 0.65rem 1rem; font-size: 1.05rem; }
+
+    .nav-link {
+      font-family: "Lilita One", Impact, sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: #0E2A5C;
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+    }
+    .nav-link:hover { background: #FFCB05; }
+
+    .social {
+      display: grid;
+      height: 46px;
+      width: 46px;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 3px solid #0E2A5C;
+      background: #fff;
+      box-shadow: 3px 3px 0 #0E2A5C;
+      transition: transform 0.12s ease;
+    }
+    .social:hover { transform: translate(-2px, -2px) rotate(-6deg); }
+    .social:active { transform: translate(2px, 2px); box-shadow: none; }
+
+    .poke-ball, .mini-ball {
+      border-radius: 999px;
+      background: linear-gradient(#EE1515 0 46%, #111 46% 54%, #fff 54% 100%);
+      border: 3px solid #111;
+      position: relative;
+      box-shadow: inset -6px -6px 0 rgba(0, 0, 0, 0.05);
+    }
+    .poke-ball::after, .mini-ball::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 3px solid #111;
+      border-radius: 999px;
+    }
+    .poke-ball { width: 84px; height: 84px; }
+    .poke-ball::after { width: 26px; height: 26px; }
+    .mini-ball { width: 22px; height: 22px; display: inline-block; flex: none; }
+    .mini-ball::after { width: 8px; height: 8px; border-width: 2px; }
+
+    .ball-a { position: absolute; left: -28px; top: 22%; animation: floaty 5.5s ease-in-out infinite; }
+    .ball-b { position: absolute; right: -36px; top: 58%; width: 64px; height: 64px; animation: floaty 7s ease-in-out infinite reverse; }
+    .ball-b::after { width: 20px; height: 20px; }
+
+    .marquee { overflow: hidden; }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 22s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+
+    .bubble-tail {
+      position: absolute;
+      left: 42px;
+      bottom: -11px;
+      height: 20px;
+      width: 20px;
+      background: #FFCB05;
+      border-right: 4px solid #0E2A5C;
+      border-bottom: 4px solid #0E2A5C;
+      transform: rotate(45deg);
+    }
+
+    .pokedex {
+      background:
+        radial-gradient(circle at 18px 18px, #5eb0ff 0 7px, transparent 8px),
+        linear-gradient(#f03a3a, #c8102e 55%, #9d1024);
+      border: 4px solid #0E2A5C;
+      border-radius: 32px;
+      box-shadow: 8px 8px 0 #0E2A5C;
+      padding: 16px;
+    }
+    .screen {
+      background: #e7f6ef;
+      border: 4px solid #0E2A5C;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .screen iframe { display: block; width: 100%; height: 460px; border: 0; }
+    @media (min-width: 640px) {
+      .screen iframe { height: 560px; }
+    }
+
+    .float-logo { animation: floaty 4.5s ease-in-out infinite; }
+    .spin-slow { animation: spin 18s linear infinite; }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes popin {
+      from { opacity: 0; transform: translateY(10px) scale(0.98); }
+      to { opacity: 1; transform: none; }
+    }
+    .rise { animation: popin 0.6s ease both; }
+    .d1 { animation-delay: 0.05s; }
+    .d2 { animation-delay: 0.12s; }
+    .d3 { animation-delay: 0.2s; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 80;
+      transform: translateX(-50%) translateY(16px);
+      opacity: 0;
+      pointer-events: none;
+      background: #0E2A5C;
+      color: #fff;
+      border: 4px solid #FFCB05;
+      border-radius: 999px;
+      padding: 0.75rem 1.1rem;
+      font-weight: 700;
+      box-shadow: 4px 4px 0 #111;
+      transition: 0.25s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true">
+    <div class="poke-ball ball-a"></div>
+    <div class="poke-ball ball-b"></div>
+  </div>
+
+  <div class="page">
+    <header class="fixed inset-x-0 top-0 z-50 p-3 sm:p-4">
+      <div class="mx-auto flex max-w-6xl items-center gap-2 rounded-full border-4 border-poke-navy bg-white py-2 pl-2 pr-2 shadow-[5px_5px_0_#0E2A5C] sm:gap-3 sm:pr-3">
+        <a href="#top" class="flex items-center gap-2 rounded-full pr-1">
+          <img src="logo.png" alt="Pokémon logo" class="h-11 w-11 rounded-full border-[3px] border-poke-navy object-cover">
+          <span class="hidden font-display text-[1.7rem] leading-none text-poke-navy sm:block">Pokémon</span>
+        </a>
+        <nav class="ml-2 hidden items-center gap-1 lg:flex" aria-label="Page">
+          <a class="nav-link" href="#story">Story</a>
+          <a class="nav-link" href="#buy">How to Buy</a>
+          <a class="nav-link" href="#chart">Chart</a>
+        </nav>
+        <div class="ml-auto flex items-center gap-2">
+          <a class="social" href="https://t.me/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="tg.png" alt="" class="h-full w-full object-cover">
+          </a>
+          <a class="social bg-black" href="https://x.com/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <img src="x.png" alt="" class="h-7 w-7 object-contain">
+          </a>
+          <a class="btn btn-red btn-sm" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">Buy Now</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="mx-auto max-w-6xl px-4 pb-16 pt-28 sm:pt-32">
+      <section class="card rise grid items-center gap-8 p-5 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:p-10">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full border-4 border-poke-navy bg-white px-3 py-1 text-sm font-bold uppercase tracking-wider text-poke-blue">
+            <span class="h-2.5 w-2.5 rounded-full bg-poke-red"></span>
+            Ethereum · Symbol Pokémon
+          </p>
+          <h1 class="brand-title mt-4 text-[clamp(3.6rem,9vw,6.6rem)] leading-[0.86]">Pokémon</h1>
+          <svg viewBox="0 0 220 18" class="mt-2 h-4 w-52" aria-hidden="true">
+            <path d="M3 11 C 40 2, 70 3, 100 9 S 170 18, 217 6" fill="none" stroke="#EE1515" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+          <p class="mt-3 font-display text-2xl text-poke-blue sm:text-3xl">Every trainer can become a legend</p>
+
+          <blockquote class="relative mt-5 rounded-[24px] border-4 border-poke-navy bg-poke-yellow p-4 text-lg font-semibold leading-snug text-poke-navy shadow-[4px_4px_0_#0E2A5C] sm:p-5 sm:text-xl">
+            Pokémon brings epic adventures, iconic creatures, and nostalgic magic together in a world where every trainer dreams of becoming a legend!
+            <span class="bubble-tail" aria-hidden="true"></span>
+          </blockquote>
+
+          <div class="mt-6 flex flex-col gap-3 rounded-[22px] border-4 border-poke-navy bg-[#f4f8ff] p-3 sm:flex-row sm:items-center">
+            <div class="min-w-0 flex-1 px-1">
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-poke-blue">Contract address</p>
+              <p id="ca-value" class="break-all font-mono text-base font-bold leading-tight text-poke-navy sm:text-lg">TBA</p>
+            </div>
+            <button type="button" class="btn btn-blue btn-sm shrink-0" data-copy>Copy CA</button>
+          </div>
+
+          <div class="mt-5 flex flex-wrap items-center gap-3">
+            <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">
+              <span class="mini-ball" aria-hidden="true"></span>
+              Buy Now
+            </a>
+            <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 19V5M4 19h16" stroke="#0E2A5C" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M8 15l4-5 3 3 5-7" stroke="#EE1515" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Chart
+            </a>
+          </div>
+
+          <div class="mt-5 flex items-center gap-3 lg:hidden">
+            <a class="nav-link border-[3px] border-poke-navy bg-white" href="#story">Story</a>
+            <a class="nav-link border-[3px] border-poke-navy bg-white" href="#buy">How to Buy</a>
+            <a class="nav-link border-[3px] border-poke-navy bg-white" href="#chart">Chart</a>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-sm px-3 pb-3 pt-2">
+          <div class="absolute inset-3 translate-x-3 translate-y-3 rounded-[2rem] border-4 border-poke-navy bg-poke-yellow"></div>
+          <img src="logo.png" alt="Pokémon" class="float-logo relative z-10 w-full rounded-[2rem] border-4 border-poke-navy">
+          <span class="absolute -right-1 top-8 z-20 rotate-6 rounded-full border-4 border-poke-navy bg-poke-yellow px-3 py-1 font-display text-lg text-poke-navy shadow-[3px_3px_0_#0E2A5C]">ETH</span>
+          <span class="absolute -left-1 bottom-12 z-20 -rotate-6 rounded-full border-4 border-poke-navy bg-poke-red px-3 py-1 font-display text-lg text-white shadow-[3px_3px_0_#0E2A5C]">$Pokémon</span>
+        </div>
+      </section>
+
+      <div class="marquee mt-8 border-y-4 border-poke-navy bg-poke-red py-3 text-white" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="flex items-center font-display text-[1.65rem] tracking-wide">
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Pokémon</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Epic Adventures</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Iconic Creatures</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Nostalgic Magic</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Become a Legend</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> $Pokémon on Ethereum</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Pokémon</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Epic Adventures</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Iconic Creatures</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Nostalgic Magic</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> Become a Legend</span>
+            <span class="mx-5 inline-flex items-center gap-3"><i class="mini-ball"></i> $Pokémon on Ethereum</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="mt-8 overflow-hidden card">
+        <img src="banner.png" alt="Pokémon banner" class="block h-auto w-full">
+        <div class="flex flex-col gap-3 border-t-4 border-poke-navy bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p class="font-display text-2xl leading-tight text-poke-navy sm:text-3xl">The adventure starts here</p>
+          <p class="max-w-md text-base font-medium text-poke-deep">A bright world of journeys, creatures, and the magic every trainer remembers.</p>
+        </div>
+      </section>
+
+      <section id="story" class="mt-8">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p class="font-display text-sm uppercase tracking-[0.18em] text-white drop-shadow-[0_2px_0_#0E2A5C]">Quest log</p>
+            <h2 class="brand-title text-5xl leading-none sm:text-6xl">The world</h2>
+          </div>
+          <p class="max-w-xl rounded-full border-4 border-poke-navy bg-white px-4 py-2 text-sm font-semibold text-poke-navy shadow-[4px_4px_0_#0E2A5C] sm:text-base">
+            One community token. A whole map of nostalgia.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article class="card overflow-hidden">
+            <div class="h-3 bg-poke-red"></div>
+            <div class="p-5 sm:p-6">
+              <div class="mb-3 grid h-12 w-12 place-items-center rounded-2xl border-4 border-poke-navy bg-[#ffe1e1]">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M3 18l5-7 4 4 3-4 6 7H3z" fill="#EE1515" stroke="#0E2A5C" stroke-width="1.6" stroke-linejoin="round"/>
+                  <circle cx="17" cy="6" r="2" fill="#FFCB05" stroke="#0E2A5C" stroke-width="1.4"/>
+                </svg>
+              </div>
+              <h3 class="font-display text-3xl text-poke-navy">Epic adventures</h3>
+              <p class="mt-2 text-lg leading-snug text-poke-deep">Every route is a new quest. $Pokémon is for trainers who want the thrill of the journey — wild paths, big goals, and a party that keeps moving.</p>
+            </div>
+          </article>
+          <article class="card overflow-hidden">
+            <div class="h-3 bg-poke-blue"></div>
+            <div class="p-5 sm:p-6">
+              <div class="mb-3 grid h-12 w-12 place-items-center rounded-2xl border-4 border-poke-navy bg-[#e5f2ff]">
+                <span class="mini-ball scale-125" aria-hidden="true"></span>
+              </div>
+              <h3 class="font-display text-3xl text-poke-navy">Iconic creatures</h3>
+              <p class="mt-2 text-lg leading-snug text-poke-deep">From the first partner you choose to the rarest encounter, this world is packed with the creatures everyone still knows by heart.</p>
+            </div>
+          </article>
+          <article class="card overflow-hidden">
+            <div class="h-3 bg-poke-yellow"></div>
+            <div class="p-5 sm:p-6">
+              <div class="mb-3 grid h-12 w-12 place-items-center rounded-2xl border-4 border-poke-navy bg-[#fff6cc]">
+                <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2l2.2 6.6H21l-5.4 4.1 2.1 6.6L12 15.8 6.3 19.3l2.1-6.6L3 8.6h6.8L12 2z" fill="#FFCB05" stroke="#0E2A5C" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="font-display text-3xl text-poke-navy">Nostalgic magic</h3>
+              <p class="mt-2 text-lg leading-snug text-poke-deep">Bright towns, wild battles, and that spark from the first time you pressed start — bottled into one token on Ethereum.</p>
+            </div>
+          </article>
+          <article class="card overflow-hidden">
+            <div class="h-3 bg-poke-navy"></div>
+            <div class="p-5 sm:p-6">
+              <div class="mb-3 grid h-12 w-12 place-items-center rounded-2xl border-4 border-poke-navy bg-[#e7eefc]">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9h12v2a6 6 0 01-12 0V9z" fill="#2A75BB" stroke="#0E2A5C" stroke-width="1.6"/>
+                  <path d="M8 9V7a4 4 0 018 0v2M12 17v3M9 21h6" stroke="#0E2A5C" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="font-display text-3xl text-poke-navy">Become a legend</h3>
+              <p class="mt-2 text-lg leading-snug text-poke-deep">Every trainer dreams of becoming a legend. Grab $Pokémon, join the party, and write the next chapter yourself.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="buy" class="card mt-8 p-5 sm:p-8 lg:p-10">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-display text-sm uppercase tracking-[0.18em] text-poke-red">Route 01 · Ethereum</p>
+            <h2 class="brand-title text-5xl leading-[0.9] sm:text-6xl">How to Buy</h2>
+            <p class="mt-3 max-w-2xl text-lg font-medium leading-snug text-poke-deep">Four steps to swap ETH for $Pokémon. The name is Pokémon, the symbol is Pokémon, and the trail runs through Uniswap.</p>
+          </div>
+          <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">
+            <span class="mini-ball" aria-hidden="true"></span>
+            Buy Now
+          </a>
+        </div>
+
+        <ol class="relative mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <li class="rounded-[24px] border-4 border-poke-navy bg-[#fff8f8] p-5 shadow-[4px_4px_0_#0E2A5C]">
+            <div class="mb-4 grid h-14 w-14 place-items-center rounded-full border-4 border-poke-navy bg-poke-red font-display text-2xl text-white">1</div>
+            <h3 class="font-display text-[1.7rem] leading-none text-poke-navy">Create a wallet</h3>
+            <p class="mt-3 text-base leading-snug text-poke-deep">Install MetaMask or any Ethereum wallet on your browser or phone. Save the recovery phrase somewhere only you can reach.</p>
+          </li>
+          <li class="rounded-[24px] border-4 border-poke-navy bg-[#f3f8ff] p-5 shadow-[4px_4px_0_#0E2A5C]">
+            <div class="mb-4 grid h-14 w-14 place-items-center rounded-full border-4 border-poke-navy bg-poke-blue font-display text-2xl text-white">2</div>
+            <h3 class="font-display text-[1.7rem] leading-none text-poke-navy">Get Ethereum</h3>
+            <p class="mt-3 text-base leading-snug text-poke-deep">Buy ETH on an exchange and send it to your wallet. Keep a little extra for network fees so the swap can go through.</p>
+          </li>
+          <li class="rounded-[24px] border-4 border-poke-navy bg-[#fffbeb] p-5 shadow-[4px_4px_0_#0E2A5C]">
+            <div class="mb-4 grid h-14 w-14 place-items-center rounded-full border-4 border-poke-navy bg-poke-yellow font-display text-2xl text-poke-navy">3</div>
+            <h3 class="font-display text-[1.7rem] leading-none text-poke-navy">Open Uniswap</h3>
+            <p class="mt-3 text-base leading-snug text-poke-deep">Hit Buy Now, connect your wallet, and set the token to $Pokémon. Paste the contract and match every character before you continue.</p>
+          </li>
+          <li class="rounded-[24px] border-4 border-poke-navy bg-white p-5 shadow-[4px_4px_0_#0E2A5C]">
+            <div class="mb-4 grid h-14 w-14 place-items-center rounded-full border-4 border-poke-navy bg-poke-navy font-display text-2xl text-poke-yellow">4</div>
+            <h3 class="font-display text-[1.7rem] leading-none text-poke-navy">Swap and catch</h3>
+            <p class="mt-3 text-base leading-snug text-poke-deep">Enter the ETH amount, confirm the swap in your wallet, and $Pokémon arrives. Add the token so the balance shows on your adventure.</p>
+          </li>
+        </ol>
+
+        <div class="mt-6 flex flex-col gap-3 rounded-[22px] border-4 border-dashed border-poke-blue bg-[#f4f8ff] p-4 sm:flex-row sm:items-center">
+          <div class="min-w-0 flex-1">
+            <p class="text-xs font-bold uppercase tracking-[0.16em] text-poke-blue">Contract address · tap copy</p>
+            <p class="ca-mirror break-all font-mono text-base font-bold text-poke-navy sm:text-lg">TBA</p>
+          </div>
+          <button type="button" class="btn btn-blue btn-sm shrink-0" data-copy>Copy CA</button>
+        </div>
+        <p class="mt-4 text-sm font-medium text-poke-deep">Trainer tip: if the contract still reads TBA, the pair is not live yet. Double-check the address, then confirm the swap only when it matches.</p>
+      </section>
+
+      <section id="chart" class="mt-8">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-display text-sm uppercase tracking-[0.18em] text-white drop-shadow-[0_2px_0_#0E2A5C]">Pokédex</p>
+            <h2 class="brand-title text-5xl leading-none sm:text-6xl">Chart</h2>
+          </div>
+          <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19V5M4 19h16" stroke="#0E2A5C" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M8 15l4-5 3 3 5-7" stroke="#EE1515" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Chart
+          </a>
+        </div>
+
+        <div class="pokedex">
+          <div class="mb-3 flex items-center gap-2 px-1">
+            <span class="h-4 w-4 rounded-full border-[3px] border-poke-navy bg-[#5eb0ff]"></span>
+            <span class="h-4 w-4 rounded-full border-[3px] border-poke-navy bg-poke-red"></span>
+            <span class="h-4 w-4 rounded-full border-[3px] border-poke-navy bg-poke-yellow"></span>
+            <span class="ml-auto font-display text-xl tracking-wide text-white">Live chart</span>
+          </div>
+          <div class="screen">
+            <iframe
+              title="Dexscreener chart for Pokémon"
+              src="https://dexscreener.com/ethereum/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=light&theme=light&chartStyle=2&chartType=usd&interval=15"
+              loading="lazy"
+              allow="clipboard-write"
+            ></iframe>
+          </div>
+          <div class="mt-3 flex flex-wrap items-center justify-between gap-3 px-1 text-white">
+            <p class="font-semibold">Dexscreener · Ethereum · $Pokémon</p>
+            <a class="btn btn-yellow btn-sm" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">Open Chart</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-8 overflow-hidden rounded-[28px] border-4 border-poke-navy bg-poke-blue shadow-[6px_6px_0_#0E2A5C]">
+        <div class="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-center lg:p-10">
+          <div>
+            <p class="font-display text-sm uppercase tracking-[0.18em] text-[#d6ecff]">Final badge</p>
+            <h2 class="mt-1 font-display text-5xl leading-[0.9] text-poke-yellow text-shadow sm:text-6xl" style="text-shadow:-3px -3px 0 #0E2A5C,3px -3px 0 #0E2A5C,-3px 3px 0 #0E2A5C,3px 3px 0 #0E2A5C,0 6px 0 #082048;">Become a legend</h2>
+            <p class="mt-4 max-w-xl text-lg font-medium leading-snug text-white">Pokémon brings the creatures, the nostalgia, and the long road together. Your trainer story starts when you swap on Ethereum.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">
+                <span class="mini-ball" aria-hidden="true"></span>
+                Buy Now
+              </a>
+              <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">Chart</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 lg:justify-end">
+            <a class="social h-14 w-14" href="https://t.me/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+              <img src="tg.png" alt="" class="h-full w-full object-cover">
+            </a>
+            <a class="social h-14 w-14 bg-black" href="https://x.com/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="X">
+              <img src="x.png" alt="" class="h-8 w-8 object-contain">
+            </a>
+            <img src="logo.png" alt="" class="h-20 w-20 rounded-full border-4 border-poke-navy object-cover shadow-[4px_4px_0_#0E2A5C]">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="relative z-10 mx-auto max-w-6xl px-4 pb-10">
+      <div class="card flex flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="" class="h-12 w-12 rounded-full border-[3px] border-poke-navy object-cover">
+          <div>
+            <p class="font-display text-2xl leading-none text-poke-navy">Pokémon</p>
+            <p class="text-sm font-semibold text-poke-blue">Symbol · Pokémon</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <a class="social" href="https://t.me/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <img src="tg.png" alt="" class="h-full w-full object-cover">
+          </a>
+          <a class="social bg-black" href="https://x.com/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <img src="x.png" alt="" class="h-7 w-7 object-contain">
+          </a>
+          <a class="btn btn-red btn-sm" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">Buy Now</a>
+          <a class="btn btn-yellow btn-sm" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">Chart</a>
+        </div>
+      </div>
+      <p class="mt-4 text-center text-sm font-semibold text-poke-navy drop-shadow-[0_1px_0_#fff]">A community meme token on Ethereum. Not financial advice, and not affiliated with Nintendo or The Pokémon Company.</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Gotcha! Contract copied</div>
+
+  <script>
+    const ca = document.getElementById("ca-value").textContent.trim();
+
+    function fallbackCopy(text) {
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+    }
+
+    function copyCA(button) {
+      const finish = () => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        const previous = button.textContent;
+        button.textContent = "Copied!";
+        window.setTimeout(() => {
+          toast.classList.remove("show");
+          button.textContent = previous;
+        }, 1600);
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ca).then(finish).catch(() => {
+          fallbackCopy(ca);
+          finish();
+        });
+      } else {
+        fallbackCopy(ca);
+        finish();
+      }
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", () => copyCA(button));
+    });
+  </script>
+</body>
+</html>
