@@ -49,7 +49,7 @@
       outline: 3px solid #FFCB05;
       outline-offset: 3px;
     }
-    section { scroll-margin-top: 108px; }
+    section { scroll-margin-top: 128px; }
 
     .bg-layer {
       position: fixed;
@@ -184,7 +184,7 @@
       padding: 16px;
     }
     .screen {
-      background: #e7f6ef;
+      background: #fff;
       border: 4px solid #0E2A5C;
       border-radius: 18px;
       overflow: hidden;
@@ -267,14 +267,14 @@
           <a class="social bg-black" href="https://x.com/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="X">
             <img src="x.png" alt="" class="h-7 w-7 object-contain">
           </a>
-          <a class="btn btn-red btn-sm" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">Buy Now</a>
+          <a class="btn btn-red btn-sm" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">Buy Now</a>
         </div>
       </div>
     </header>
 
-    <main id="top" class="mx-auto max-w-6xl px-4 pb-16 pt-28 sm:pt-32">
+    <main id="top" class="mx-auto max-w-6xl px-4 pb-16 pt-32 sm:pt-36">
       <section class="card rise grid items-center gap-8 p-5 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:p-10">
-        <div>
+        <div class="order-2 lg:order-1">
           <p class="inline-flex items-center gap-2 rounded-full border-4 border-poke-navy bg-white px-3 py-1 text-sm font-bold uppercase tracking-wider text-poke-blue">
             <span class="h-2.5 w-2.5 rounded-full bg-poke-red"></span>
             Ethereum · Symbol Pokémon
@@ -293,17 +293,17 @@
           <div class="mt-6 flex flex-col gap-3 rounded-[22px] border-4 border-poke-navy bg-[#f4f8ff] p-3 sm:flex-row sm:items-center">
             <div class="min-w-0 flex-1 px-1">
               <p class="text-xs font-bold uppercase tracking-[0.16em] text-poke-blue">Contract address</p>
-              <p id="ca-value" class="break-all font-mono text-base font-bold leading-tight text-poke-navy sm:text-lg">TBA</p>
+              <p id="ca-value" class="break-all font-mono text-base font-bold leading-tight text-poke-navy sm:text-lg">0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a</p>
             </div>
             <button type="button" class="btn btn-blue btn-sm shrink-0" data-copy>Copy CA</button>
           </div>
 
           <div class="mt-5 flex flex-wrap items-center gap-3">
-            <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">
               <span class="mini-ball" aria-hidden="true"></span>
               Buy Now
             </a>
-            <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M4 19V5M4 19h16" stroke="#0E2A5C" stroke-width="2.6" stroke-linecap="round"/>
                 <path d="M8 15l4-5 3 3 5-7" stroke="#EE1515" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -319,7 +319,7 @@
           </div>
         </div>
 
-        <div class="relative mx-auto w-full max-w-sm px-3 pb-3 pt-2">
+        <div class="relative order-1 mx-auto w-full max-w-sm px-3 pb-3 pt-2 lg:order-2">
           <div class="absolute inset-3 translate-x-3 translate-y-3 rounded-[2rem] border-4 border-poke-navy bg-poke-yellow"></div>
           <img src="logo.png" alt="Pokémon" class="float-logo relative z-10 w-full rounded-[2rem] border-4 border-poke-navy">
           <span class="absolute -right-1 top-8 z-20 rotate-6 rounded-full border-4 border-poke-navy bg-poke-yellow px-3 py-1 font-display text-lg text-poke-navy shadow-[3px_3px_0_#0E2A5C]">ETH</span>
@@ -357,7 +357,7 @@
       <section id="story" class="mt-8">
         <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p class="font-display text-sm uppercase tracking-[0.18em] text-white drop-shadow-[0_2px_0_#0E2A5C]">Quest log</p>
+            <p class="inline-flex rounded-full border-4 border-poke-navy bg-poke-yellow px-3 py-1 font-display text-sm uppercase tracking-[0.14em] text-poke-navy shadow-[3px_3px_0_#0E2A5C]">Quest log</p>
             <h2 class="brand-title text-5xl leading-none sm:text-6xl">The world</h2>
           </div>
           <p class="max-w-xl rounded-full border-4 border-poke-navy bg-white px-4 py-2 text-sm font-semibold text-poke-navy shadow-[4px_4px_0_#0E2A5C] sm:text-base">
@@ -423,7 +423,7 @@
             <h2 class="brand-title text-5xl leading-[0.9] sm:text-6xl">How to Buy</h2>
             <p class="mt-3 max-w-2xl text-lg font-medium leading-snug text-poke-deep">Four steps to swap ETH for $Pokémon. The name is Pokémon, the symbol is Pokémon, and the trail runs through Uniswap.</p>
           </div>
-          <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">
             <span class="mini-ball" aria-hidden="true"></span>
             Buy Now
           </a>
@@ -455,20 +455,20 @@
         <div class="mt-6 flex flex-col gap-3 rounded-[22px] border-4 border-dashed border-poke-blue bg-[#f4f8ff] p-4 sm:flex-row sm:items-center">
           <div class="min-w-0 flex-1">
             <p class="text-xs font-bold uppercase tracking-[0.16em] text-poke-blue">Contract address · tap copy</p>
-            <p class="ca-mirror break-all font-mono text-base font-bold text-poke-navy sm:text-lg">TBA</p>
+            <p class="ca-mirror break-all font-mono text-base font-bold text-poke-navy sm:text-lg">0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a</p>
           </div>
           <button type="button" class="btn btn-blue btn-sm shrink-0" data-copy>Copy CA</button>
         </div>
-        <p class="mt-4 text-sm font-medium text-poke-deep">Trainer tip: if the contract still reads TBA, the pair is not live yet. Double-check the address, then confirm the swap only when it matches.</p>
+        <p class="mt-4 text-sm font-medium text-poke-deep">Trainer tip: if the contract still reads 0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a, the pair is not live yet. Double-check the address, then confirm the swap only when it matches.</p>
       </section>
 
       <section id="chart" class="mt-8">
         <div class="mb-5 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p class="font-display text-sm uppercase tracking-[0.18em] text-white drop-shadow-[0_2px_0_#0E2A5C]">Pokédex</p>
+            <p class="inline-flex rounded-full border-4 border-poke-navy bg-poke-yellow px-3 py-1 font-display text-sm uppercase tracking-[0.14em] text-poke-navy shadow-[3px_3px_0_#0E2A5C]">Pokédex</p>
             <h2 class="brand-title text-5xl leading-none sm:text-6xl">Chart</h2>
           </div>
-          <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 19V5M4 19h16" stroke="#0E2A5C" stroke-width="2.6" stroke-linecap="round"/>
               <path d="M8 15l4-5 3 3 5-7" stroke="#EE1515" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -487,14 +487,14 @@
           <div class="screen">
             <iframe
               title="Dexscreener chart for Pokémon"
-              src="https://dexscreener.com/ethereum/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=light&theme=light&chartStyle=2&chartType=usd&interval=15"
+              src="https://dexscreener.com/ethereum/0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=light&theme=light&chartStyle=2&chartType=usd&interval=15"
               loading="lazy"
               allow="clipboard-write"
             ></iframe>
           </div>
           <div class="mt-3 flex flex-wrap items-center justify-between gap-3 px-1 text-white">
-            <p class="font-semibold">Dexscreener · Ethereum · $Pokémon</p>
-            <a class="btn btn-yellow btn-sm" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">Open Chart</a>
+            <p class="max-w-md font-semibold leading-snug">Dexscreener embed · Ethereum · fills in when 0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a becomes the real pair</p>
+            <a class="btn btn-yellow btn-sm" href="https://dexscreener.com/ethereum/0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">Open Chart</a>
           </div>
         </div>
       </section>
@@ -502,15 +502,15 @@
       <section class="mt-8 overflow-hidden rounded-[28px] border-4 border-poke-navy bg-poke-blue shadow-[6px_6px_0_#0E2A5C]">
         <div class="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-center lg:p-10">
           <div>
-            <p class="font-display text-sm uppercase tracking-[0.18em] text-[#d6ecff]">Final badge</p>
+            <p class="inline-flex rounded-full border-[3px] border-[#082048] bg-poke-yellow px-3 py-1 font-display text-sm uppercase tracking-[0.14em] text-poke-navy">Final badge</p>
             <h2 class="mt-1 font-display text-5xl leading-[0.9] text-poke-yellow text-shadow sm:text-6xl" style="text-shadow:-3px -3px 0 #0E2A5C,3px -3px 0 #0E2A5C,-3px 3px 0 #0E2A5C,3px 3px 0 #0E2A5C,0 6px 0 #082048;">Become a legend</h2>
             <p class="mt-4 max-w-xl text-lg font-medium leading-snug text-white">Pokémon brings the creatures, the nostalgia, and the long road together. Your trainer story starts when you swap on Ethereum.</p>
             <div class="mt-5 flex flex-wrap gap-3">
-              <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">
+              <a class="btn btn-red" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">
                 <span class="mini-ball" aria-hidden="true"></span>
                 Buy Now
               </a>
-              <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">Chart</a>
+              <a class="btn btn-yellow" href="https://dexscreener.com/ethereum/0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">Chart</a>
             </div>
           </div>
           <div class="flex items-center gap-3 lg:justify-end">
@@ -542,11 +542,11 @@
           <a class="social bg-black" href="https://x.com/pokemoncoin_eth" target="_blank" rel="noopener noreferrer" aria-label="X">
             <img src="x.png" alt="" class="h-7 w-7 object-contain">
           </a>
-          <a class="btn btn-red btn-sm" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=TBA" target="_blank" rel="noopener noreferrer">Buy Now</a>
-          <a class="btn btn-yellow btn-sm" href="https://dexscreener.com/ethereum/TBA" target="_blank" rel="noopener noreferrer">Chart</a>
+          <a class="btn btn-red btn-sm" href="https://app.uniswap.org/#/swap?inputCurrency=eth&outputCurrency=0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">Buy Now</a>
+          <a class="btn btn-yellow btn-sm" href="https://dexscreener.com/ethereum/0xe4a0a4ccc46dcf1fa121bedeb47567a9758b9f8a" target="_blank" rel="noopener noreferrer">Chart</a>
         </div>
       </div>
-      <p class="mt-4 text-center text-sm font-semibold text-poke-navy drop-shadow-[0_1px_0_#fff]">A community meme token on Ethereum. Not financial advice, and not affiliated with Nintendo or The Pokémon Company.</p>
+      <p class="mx-auto mt-4 max-w-3xl rounded-full border-4 border-poke-navy bg-white px-4 py-2 text-center text-sm font-semibold text-poke-navy shadow-[4px_4px_0_#0E2A5C]">A community meme token on Ethereum. Not financial advice, and not affiliated with Nintendo or The Pokémon Company.</p>
     </footer>
   </div>
 
